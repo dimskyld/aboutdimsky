@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dimas Alfarisky L.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+    background:linear-gradient(
+        180deg,
+        #3b82f6 0%,
+        #60a5fa 30%,
+        #93c5fd 65%,
+        #dbeafe 100%
+    );
+    position:relative;
+    padding:40px 15px;
+}
+
+/* ===========================
+   AWAN
+=========================== */
+
+.cloud{
+    position:absolute;
+    background:white;
+    border-radius:100px;
+    opacity:.75;
+}
+
+.cloud::before,
+.cloud::after{
+    content:"";
+    position:absolute;
+    background:white;
+    border-radius:50%;
+}
+
+.cloud1{
+    width:180px;
+    height:60px;
+    top:10%;
+    left:-220px;
+    animation:cloud 35s linear infinite;
+}
+.cloud1::before{
+    width:80px;
+    height:80px;
+    left:20px;
+    top:-35px;
+}
+.cloud1::after{
+    width:90px;
+    height:90px;
+    right:25px;
+    top:-45px;
+}
+
+.cloud2{
+    width:230px;
+    height:70px;
+    top:35%;
+    left:-280px;
+    animation:cloud 42s linear infinite;
+    animation-delay:-10s;
+}
+.cloud2::before{
+    width:90px;
+    height:90px;
+    left:30px;
+    top:-40px;
+}
+.cloud2::after{
+    width:110px;
+    height:110px;
+    right:30px;
+    top:-50px;
+}
+
+.cloud3{
+    width:150px;
+    height:50px;
+    top:72%;
+    left:-180px;
+    animation:cloud 30s linear infinite;
+    animation-delay:-18s;
+}
+.cloud3::before{
+    width:70px;
+    height:70px;
+    left:18px;
+    top:-30px;
+}
+.cloud3::after{
+    width:80px;
+    height:80px;
+    right:18px;
+    top:-35px;
+}
+
+@keyframes cloud{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(calc(100vw + 500px));
+    }
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card{
+    width:100%;
+    max-width:520px;
+    padding:40px 28px;
+    text-align:center;
+    border-radius:28px;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
+    box-shadow:0 15px 45px rgba(0,0,0,.18);
+    z-index:2;
+}
+
+h1{
+    color:white;
+    font-size:2.4rem;
+    font-weight:800;
+    text-shadow:0 5px 15px rgba(0,0,0,.25);
+}
+
+.subtitle{
+    color:white;
+    margin-top:10px;
+    font-size:1rem;
+}
+
+/* ===========================
+   PROMO NOVEL
+=========================== */
+
+.promo{
+    margin:30px 0;
+}
+
+.promo a{
+    display:inline-block;
+    transition:.3s;
+}
+
+.promo a:hover{
+    transform:scale(1.03);
+}
+
+.promo img{
+    display:block;
+    max-width:100%;
+    height:auto;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.links{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.link-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    background:white;
+    color:#2563eb;
+    padding:16px;
+    border-radius:18px;
+    font-weight:700;
+    transition:.25s;
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.link-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+.footer{
+    margin-top:28px;
+    color:white;
+    font-size:.85rem;
+    opacity:.9;
+}
+
+@media(max-width:500px){
+
+h1{
+font-size:2rem;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+
+<div class="card">
+
+<h1>Dimas Alfarisky L.</h1>
+
+<p class="subtitle">
+Segalanya tentang Dimsky ada di sini!
+</p>
+
+<!-- PROMOSI NOVEL -->
+<div class="promo">
+<a id="promoLink" href="#">
+<img id="promoImage" src="promoteposter.jpg" alt="Lestari, Ia Cinta Pertamaku">
+</a>
+</div>
+
+<!-- TOMBOL -->
+<div class="links" id="links"></div>
+
+<div class="footer">
+Made by Dimsky
+</div>
+
+</div>
+
+<script>
+
+/* =====================================================
+   PROMOSI NOVEL
+   Ganti link jika suatu saat novel berpindah.
+===================================================== */
+
+const promo = {
+image : "promoteposter.jpeg",
+url : "https://dimskyld.github.io/countdown/"
+};
+
+document.getElementById("promoImage").src = promo.image;
+document.getElementById("promoLink").href = promo.url;
+
+
+/* =====================================================
+   DAFTAR TOMBOL
+   Tinggal copy salah satu blok untuk menambah tombol.
+===================================================== */
+
+const buttons = [
+
+{
+title:"📖 Wattpad",
+url:"https://www.wattpad.com/user/dimsky_ld"
+},
+
+{
+title:"📸 Instagram",
+url:"https://instagram.com/dimsky_ld"
+},
+
+{
+title:"🎵 TikTok",
+url:"https://www.tiktok.com/@dimsky_ld"
+},
+
+{
+title:"🎮 TopUp Store (Kode Promo : LGCSNEW)",
+url:"https://www.lapakgaming.com?utm_campaign=dimsky&utm_source=Affiliate&utm_medium=LGA"
+},
+
+];
+
+
+/* =====================================================
+   TIDAK PERLU DIUBAH
+===================================================== */
+
+const container = document.getElementById("links");
+
+buttons.forEach(item=>{
+
+const a=document.createElement("a");
+
+a.className="link-btn";
+a.href=item.url;
+a.target="_blank";
+a.innerHTML=item.title;
+
+container.appendChild(a);
+
+});
+
+</script>
+
+</body>
+</html>
